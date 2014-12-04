@@ -25,20 +25,20 @@ public class MainActivity extends FragmentActivity {
     private String[] drawerListItems = new String[]{"132", "132經高鐵", "133", "172去程", "172返程", "9025往台北","9025往中壢","9025往台北(繞駛中大)","9025往中壢(繞駛中大)"};;
 
     private ActionBarDrawerToggle mDrawerToggle;
-    private CharSequence mDrawerTitle;
-    private CharSequence mTitle;
-
+    private CharSequence drawerTitle;
 
     private static final int NUM_PAGES = 9;
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
+
+    int currentPagePosition = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // mPlanetTitles = getResources().getStringArray(R.array.planets_array);
+
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
@@ -47,9 +47,7 @@ public class MainActivity extends FragmentActivity {
                 android.R.layout.simple_list_item_1, drawerListItems));
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
-        //mTitle = mDrawerTitle = getTitle();
-        mTitle = getString(R.string.drawer_close_title);
-        mDrawerTitle = getString(R.string.drawer_open_title);
+        drawerTitle = getString(R.string.drawer_open_title);
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                 R.drawable.holo_light_ic_drawer, R.string.drawer_open, R.string.drawer_close) {
@@ -57,14 +55,14 @@ public class MainActivity extends FragmentActivity {
             /** Called when a drawer has settled in a completely closed state. */
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
-                getActionBar().setTitle(mTitle);
+                getActionBar().setTitle(drawerListItems[currentPagePosition]);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
 
             /** Called when a drawer has settled in a completely open state. */
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                getActionBar().setTitle(mDrawerTitle);
+                getActionBar().setTitle(drawerTitle);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
@@ -81,7 +79,19 @@ public class MainActivity extends FragmentActivity {
         mPager = (ViewPager) findViewById(R.id.pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
+        mPager.setOnPageChangeListener(
+                new ViewPager.SimpleOnPageChangeListener() {
+                    @Override
+                    public void onPageSelected(int position) {
+                        // When swiping between pages, select the
+                        // corresponding tab.
+                        getActionBar().setTitle(drawerListItems[position]);
+                    }
+                });
 
+
+        //getActionBar.setTitle(user-pref);
+        //mpager.setCurrentPage(user-pref);
 
     }
 
@@ -90,23 +100,15 @@ public class MainActivity extends FragmentActivity {
     public boolean onPrepareOptionsMenu(Menu menu) {
         // If the nav drawer is open, hide action items related to the content view
         boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-        //menu.findItem(R.id.action_websearch).setVisible(!drawerOpen);
         return super.onPrepareOptionsMenu(menu);
     }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {
-            //selectItem(position);
             mPager.setCurrentItem(position);
             mDrawerLayout.closeDrawers();
         }
-    }
-
-    @Override
-    public void setTitle(CharSequence title) {
-        //mTitle = title;
-        //getActionBar().setTitle(mTitle);
     }
 
     @Override
@@ -126,9 +128,8 @@ public class MainActivity extends FragmentActivity {
             return true;
         }
 
-        int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
+        // int id = item.getItemId();
         /*if (id == R.id.action_settings) {
             return true;
         }*/

@@ -34,8 +34,8 @@ public class DetailFragment extends Fragment {
     private ConnectivityManager conMgr;
     private NetworkInfo activeNetwork;
 
-    private Handler handler;
-    private Runnable runnable;
+    private static Handler handler;
+    private static Runnable runnable;
     private boolean isAnotherAsyncTaskRunning = false;
 
     SwipeRefreshLayout swipeRefreshLayout;
@@ -124,7 +124,6 @@ public class DetailFragment extends Fragment {
                 handler.postDelayed(this, 30000);//之後每30秒執行一次
             }
         };
-        //handler.post(runnable);
     }
 
     public void onResume(){
@@ -173,6 +172,7 @@ public class DetailFragment extends Fragment {
         @Override
         protected Void doInBackground(Integer... params) {
             getBusData(position);
+            calculatePosition();//測試中
             return null;
         }
 
@@ -191,14 +191,15 @@ public class DetailFragment extends Fragment {
         @Override
         protected void onPostExecute(Void v) {
             listAdapter.notifyDataSetChanged();
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    swipeRefreshLayout.setRefreshing(false);
-                }
-            });
+            if(getActivity()!= null){
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                });
+            }
             isAnotherAsyncTaskRunning= false;
-            calculatePosition();//測試中
         }
     }
 
@@ -297,7 +298,12 @@ public class DetailFragment extends Fragment {
                 nearestBusStop = i;
             }
         }
-        listView.smoothScrollToPosition(nearestBusStop);
+
+        if(nearestBusStop + 12 < listView.getCount()){
+            listView.smoothScrollToPosition(nearestBusStop + 12);
+        }else{
+            listView.smoothScrollToPosition(listView.getCount()-1);
+        }
 
         Log.e("debug", "nearestBusStop=" + nearestBusStop);
     }
