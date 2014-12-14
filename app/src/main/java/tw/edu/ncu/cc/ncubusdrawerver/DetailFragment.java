@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import org.jsoup.Jsoup;
@@ -216,7 +217,7 @@ public class DetailFragment extends Fragment {
                     itemList.clear();
                     Data.datas[position].clear();
                     for (int i = 0; i < links.size() - 2; i += 3) {
-                        BusData PData = new BusData();
+                        final BusData PData = new BusData();
                         Element link = links.get(i + 1);
                         linkText = link.text();
                         PData.busStop = linkText;
@@ -299,15 +300,17 @@ public class DetailFragment extends Fragment {
             }
         }
 
-        if(nearestBusStop + 12 < listView.getCount()){
-            listView.smoothScrollToPosition(nearestBusStop + 12);
-        }else{
-            listView.smoothScrollToPosition(listView.getCount()-1);
+        if(listView != null){
+            if(nearestBusStop + 12 < listView.getCount()){
+                listView.smoothScrollToPosition(nearestBusStop + 12);
+            }else{
+                listView.smoothScrollToPosition(listView.getCount()-1);
+            }
         }
+
 
         Log.e("debug", "nearestBusStop=" + nearestBusStop);
     }
-
 
 
 }

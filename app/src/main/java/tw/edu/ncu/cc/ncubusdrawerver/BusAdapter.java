@@ -21,6 +21,7 @@ public class BusAdapter extends ArrayAdapter {
 
     Activity myContext;
     private ArrayList<BusData> datas;
+    String rowColor[] = {"#8FFDB1","#FFFFFF"};
 
     public BusAdapter(Context context, int resource, ArrayList<BusData> objects) {
         super(context, resource, objects);
@@ -48,6 +49,10 @@ public class BusAdapter extends ArrayAdapter {
             viewHolder.TitleView.setTextColor(Color.BLACK);
             viewHolder.TitleView.setText(datas.get(position).busStop);
             viewHolder.TimeView.setText(datas.get(position).busTime);
+
+            convertView.setBackgroundColor(Color.parseColor(rowColor[position%2]));
+            Log.e("debug","Color changed");
+
 
             Pattern p = Pattern.compile("-?\\d+");
             Matcher m = p.matcher(datas.get(position).busTime);
