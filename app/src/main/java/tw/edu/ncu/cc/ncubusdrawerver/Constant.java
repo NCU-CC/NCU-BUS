@@ -9,7 +9,21 @@ import java.util.Arrays;
  */
 public class Constant {
 
-    //Web Links
+    //Web Links new
+    public static final String[] urls = {
+            "http://124.199.77.90/Taoyuan/PDA/businfo.aspx?Routeid=132&GO_OR_BACK=1&Line=1&lang=Cht",//132
+            "http://124.199.77.90/Taoyuan/PDA/businfo.aspx?Routeid=132A&GO_OR_BACK=1&Line=1&lang=Cht",//132_A
+            "http://124.199.77.90/Taoyuan/PDA/businfo.aspx?Routeid=133&GO_OR_BACK=1&Line=2&lang=Cht",//133
+            "http://124.199.77.90/Taoyuan/PDA/businfo.aspx?Routeid=172&GO_OR_BACK=1&Line=all&lang=Cht",//172去程
+            "http://124.199.77.90/Taoyuan/PDA/businfo.aspx?Routeid=172&GO_OR_BACK=2&Line=all&lang=Cht",//172返程
+            "http://www.taiwanbus.tw/aspx/dyBus/BusXMLLine.aspx?Mode=4&RunId=8194",//9025往台北
+            "http://www.taiwanbus.tw/aspx/dyBus/BusXMLLine.aspx?Mode=4&RunId=8193",//9025往中壢
+            "http://www.taiwanbus.tw/aspx/dyBus/BusXMLLine.aspx?Mode=4&RunId=9405",//9025往台北(繞駛中央大學)
+            "http://www.taiwanbus.tw/aspx/dyBus/BusXMLLine.aspx?Mode=4&RunId=9406",//90252往中壢(繞駛中央大學)
+    };
+
+    //Web Links old
+    /*
     public static final String[] urls = {
             "http://124.199.77.90/Taoyuan/PDA/businfo.aspx?Routeid=132&GO_OR_BACK=1&Line=1&lang=Cht",//132
             "http://124.199.77.90/Taoyuan/PDA/businfo.aspx?Routeid=132A&GO_OR_BACK=1&Line=1&lang=Cht",//132_A
@@ -25,7 +39,7 @@ public class Constant {
             "http://pda.5284.com.tw/MQS/businfo2.jsp?routename=9025%E8%87%BA%E5%8C%97%E5%B8%82%E6%9D" +//9025返程繞駛中央
                     "%BE%E5%B1%B1%E5%8D%80%E2%86%92%E5%9C%8B%E9%81%931%E8%99%9F%E2%86%92%E4%B8%AD%E5%A3%A2%5B%E7%B9%9E%E9%A7%9B%E4%B8%AD%E5%A4%AE%E5%A4%A7%E5%AD%B8%5D",
             "http://www.taiwanbus.tw/DyBus.aspx?Lang=&ID=8194#9025#1"//test
-    };
+    };*/
 
 
     //Bus stop locations
@@ -60,4 +74,120 @@ public class Constant {
     //ALL bus stop longitude
     public static final Double[][] longitudes = new Double[][]{Longitudes_132, Longitudes_132_A, Longitudes_133, Longitudes_172_GO,
             Longitudes_172_BACK, Longitudes_9025_GO, Longitudes_9025_BACK, Longitudes_9025_GO_NCU, Longitudes_9025_BACK_NCU};
+
+    //Timetables
+    public static final String[] timeTables ={
+            //132
+            "中壢端發車時間\n" +
+            "06:30\t中壢開\t \t \n" +
+            "07:10\t \t \t \n" +
+            "07:30\t \t \t \n" +
+            "07:50\t \t \t \n" +
+            "08:10\t延駛高鐵桃園站\t  \n" +
+            "08:30\t \t \t \n" +
+            "08:50\t \t \t \n" +
+            "09:10\t \t \t \n" +
+            "09:30\t延駛高鐵桃園站\t \n" +
+            "09:50\t延駛高鐵桃園站\t \n" +
+            "10:10\t \t \t \n" +
+            "10:30\t \t \t \n" +
+            "10:50\t延駛高鐵桃園站\t \n" +
+            "11:10\t \t \t \n" +
+            "11:30\t延駛高鐵桃園站\t \n" +
+            "11:50\t \t \t \n" +
+            "12:10\t \t \t \n" +
+            "12:30\t \t \t \n" +
+            "12:50\t \t \t \n" +
+            "13:10\t延駛高鐵桃園站 \n" +
+            "13:30\t \t \t \n" +
+            "13:50\t延駛高鐵桃園站 \n" +
+            "14:10\t延駛高鐵桃園站 \n" +
+            "14:30\t延駛高鐵桃園站 \n" +
+            "14:50\t \t \t \n" +
+            "15:10\t \t \t \n" +
+            "15:30\t \t \t \n" +
+            "15:50\t \t \t \n" +
+            "16:10\t \t \t \n" +
+            "16:30\t \t \t \n" +
+            "16:50\t \t \t \n" +
+            "17:10\t \t \t \n" +
+            "17:30\t \t \t \n" +
+            "17:50\t \t \t \n" +
+            "18:10\t \t \t \n" +
+            "18:30\t \t \t \n" +
+            "18:50\t延駛高鐵桃園站\n" +
+            "19:10\t \t \t \n" +
+            "19:30\t \t \t \n" +
+            "19:50\t \t \t \n" +
+            "20:10\t \t \t \n" +
+            "20:30\t \t \t \n" +
+            "20:55\t \t \t \n" +
+            "21:20\t \t \t \n" +
+            "21:45\t \t \t \n" +
+            "22:10\t ",
+
+            //132經高鐵
+            "中壢端發車時間\t \n" +
+            "08:10\t延駛高鐵桃園站\n" +
+            "09:30\t延駛高鐵桃園站\n" +
+            "09:50\t延駛高鐵桃園站\n" +
+            "10:50\t延駛高鐵桃園站\n" +
+            "11:30\t延駛高鐵桃園站\n" +
+            "13:10\t延駛高鐵桃園站\n" +
+            "13:50\t延駛高鐵桃園站\n" +
+            "14:10\t延駛高鐵桃園站\n" +
+            "14:30\t延駛高鐵桃園站\n" +
+            "18:50\t延駛高鐵桃園站",
+
+            //9025
+            "平常日起點發車時間\n" +
+            "0600\t1000\t1500\t1900\n" +
+            "0620\t1030\t1530\t1930\n" +
+            "0640\t1100\t1600\t2000\n" +
+            "0700\t1130\t1630\t2030\n" +
+            "0720\t1200\t1700\t2100\n" +
+            "0740\t1230\t1720\t2130\n" +
+            "0800\t1300\t1740\t2200\n" +
+            "0830\t1330\t1800\t2230\n" +
+            "0900\t1400\t1820\n" +
+            "0930\t1430\t1840\n" +
+            "\n" +
+            "例假日起點發車時間\n" +
+            "0600\t1200\t1800\n" +
+            "0630\t1230\t1830\n" +
+            "0700\t1300\t1900\n" +
+            "0730\t1330\t1930\n" +
+            "0800\t1400\t2000\n" +
+            "0830\t1430\t2030\n" +
+            "0900\t1500\t2100\n" +
+            "0930\t1530\t2130\n" +
+            "1000\t1600\t2200\n" +
+            "1030\t1630\t2230\n" +
+            "1100\t1700\n" +
+            "1130\t1730",
+
+            //9025繞駛中央大學
+            "平常日\n" +
+            "中壢端發車時間\n" +
+            "1200 1600 1700 1750\n" +
+            "預估中央大學抵達時間\n" +
+            "1220 1620 1720 1810\n" +
+            "\n" +
+            "例假日\n" +
+            "中壢端發車時間\n" +
+            "0717 0730 1630 1815\n" +
+            "預估中央大學抵達時間\n" +
+            "0737 0750 1650 1835",
+
+            "平常日\n" +
+            "松山機場端發車時間\n" +
+            "0637 0710 0750 1230\n" +
+            "預估中央大學抵達時間\n" +
+            "0747 0820 0900 1340\n" +
+            "\n" +
+            "例假日\n" +
+            "松山機場端發車時間\n" +
+            "0730 1810 1900 1945\n" +
+            "預估中央大學抵達時間\n" +
+            "0840 1920 2010 2055"};
 }

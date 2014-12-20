@@ -51,7 +51,6 @@ public class BusAdapter extends ArrayAdapter {
             viewHolder.TimeView.setText(datas.get(position).busTime);
 
             convertView.setBackgroundColor(Color.parseColor(rowColor[position%2]));
-            Log.e("debug","Color changed");
 
 
             Pattern p = Pattern.compile("-?\\d+");

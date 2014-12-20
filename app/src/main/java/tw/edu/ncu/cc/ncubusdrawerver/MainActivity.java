@@ -1,5 +1,6 @@
 package tw.edu.ncu.cc.ncubusdrawerver;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -27,7 +28,7 @@ public class MainActivity extends FragmentActivity {
 
     private DrawerLayout drawerLayout;
     private ListView drawerList;
-    private String[] drawerListItems = new String[]{"132", "132經高鐵", "133", "172去程", "172返程", "9025往台北","9025往中壢","9025往台北(繞駛中大)","9025往中壢(繞駛中大)"};;
+    private String[] drawerListItems = new String[]{"132", "132經高鐵", "133", "172去程", "172返程", "9025往台北","9025往中壢","9025往台北(繞駛中大)","9025往中壢(繞駛中大)"};
 
     private ActionBarDrawerToggle drawerToggle;
     private CharSequence drawerTitle;
@@ -136,10 +137,11 @@ public class MainActivity extends FragmentActivity {
         }
 
         //noinspection SimplifiableIfStatement
-        // int id = item.getItemId();
-        /*if (id == R.id.action_settings) {
+        int id = item.getItemId();
+        if (id == R.id.action_time_table) {
+            displayTimeTable();
             return true;
-        }*/
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -221,6 +223,63 @@ public class MainActivity extends FragmentActivity {
             startActivity(intent);
         }
 
+    }
+
+    public void displayTimeTable(){
+        Intent intent;
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        AlertDialog dialog;
+
+        switch(currentPagePosition){
+            case 0://132
+                builder.setTitle("132時刻表");
+                builder.setMessage(Constant.timeTables[0]);
+                dialog = builder.create();
+                dialog.show();
+                break;
+            case 1://132經高鐵
+                builder.setMessage(Constant.timeTables[1]);
+                builder.setTitle("132時刻表(經高鐵)");
+                dialog = builder.create();
+                dialog.show();
+                break;
+            case 2://133
+                intent = new Intent(Intent.ACTION_VIEW,Uri.parse("http://www.chunglibus.com.tw/route/133-2.html"));
+                startActivity(intent);
+                break;
+            case 3://172去程
+                intent = new Intent(Intent.ACTION_VIEW,Uri.parse("http://www.chunglibus.com.tw/route/172.html"));
+                startActivity(intent);
+                break;
+            case 4://172返程
+                intent = new Intent(Intent.ACTION_VIEW,Uri.parse("http://www.chunglibus.com.tw/route/172.html"));
+                startActivity(intent);
+                break;
+            case 5://9025往台北
+                builder.setTitle("9025往台北時刻表");
+                builder.setMessage(Constant.timeTables[2]);
+                dialog = builder.create();
+                dialog.show();
+                break;
+            case 6://9025往中壢
+                builder.setTitle("9025往中壢時刻表");
+                builder.setMessage(Constant.timeTables[2]);
+                dialog = builder.create();
+                dialog.show();
+                break;
+            case 7://9025往台北(繞駛中大)
+                builder.setTitle("9025往台北時刻表(繞駛中大)");
+                builder.setMessage(Constant.timeTables[3]);
+                dialog = builder.create();
+                dialog.show();
+                break;
+            case 8://9025往中壢(繞駛中大)
+                builder.setTitle("9025往中壢時刻表(繞駛中大)");
+                builder.setMessage(Constant.timeTables[3]);
+                dialog = builder.create();
+                dialog.show();
+                break;
+        }
     }
 
 }

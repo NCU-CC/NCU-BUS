@@ -18,7 +18,8 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            style="?android:buttonBarStyle">
 
             <Button
                 android:layout_width="0dp"
@@ -26,7 +27,8 @@
                 android:layout_weight="1"
                 android:text="高鐵官網"
                 android:id="@+id/hsr_web"
-                android:onClick="onButtonClick"/>
+                android:onClick="onButtonClick"
+                style="?android:buttonBarStyle"/>
 
             <Button
                 android:layout_width="0dp"
@@ -34,7 +36,8 @@
                 android:layout_weight="1"
                 android:text="高鐵APP"
                 android:id="@+id/hsr_app"
-                android:onClick="onButtonClick"/>
+                android:onClick="onButtonClick"
+                style="?android:buttonBarStyle"/>
 
             <Button
                 android:layout_width="0dp"
@@ -42,7 +45,8 @@
                 android:layout_weight="1"
                 android:text="台鐵官網"
                 android:id="@+id/tra_web"
-                android:onClick="onButtonClick"/>
+                android:onClick="onButtonClick"
+                style="?android:buttonBarStyle"/>
 
             <Button
                 android:layout_width="0dp"
@@ -50,7 +54,8 @@
                 android:layout_weight="1"
                 android:text="台鐵APP"
                 android:id="@+id/tra_app"
-                android:onClick="onButtonClick"/>
+                android:onClick="onButtonClick"
+                style="?android:buttonBarStyle"/>
 
         </LinearLayout>
     </LinearLayout>
