@@ -32,6 +32,7 @@ import org.jsoup.select.Elements;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DetailFragment extends Fragment {
 
@@ -113,10 +114,15 @@ public class DetailFragment extends Fragment {
 
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                int topRowVerticalPosition =
-                        (listView == null || listView.getChildCount() == 0) ?
-                                0 : listView.getChildAt(0).getTop();
-                swipeRefreshLayout.setEnabled(topRowVerticalPosition >= 0);
+                try{
+                    int topRowVerticalPosition =
+                            (listView == null || listView.getChildCount() == 0) ?
+                                    0 : listView.getChildAt(0).getTop();
+                    swipeRefreshLayout.setEnabled(topRowVerticalPosition >= 0);
+                }catch(NullPointerException e){
+                    e.printStackTrace();
+                }
+
             }
         });
     }
@@ -205,6 +211,7 @@ public class DetailFragment extends Fragment {
         @Override
         protected void onPostExecute(Void v) {
             listAdapter.notifyDataSetChanged();
+            calculatePosition();
             if(getActivity()!= null){
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
@@ -349,26 +356,54 @@ public class DetailFragment extends Fragment {
     }
 
     private void calculatePosition(){
-        // 取得位置提供者，不下條件，讓系統決定最適用者，true 表示生效的 provider
-        String provider = this.locationMgr.getBestProvider(new Criteria(), true);
-        if (provider == null) {//無可用的provider
-            return;
+        List<String> providers = locationMgr.getProviders(true);
+        Location bestLocation = null;
+
+        for (String provider : providers) {
+            Location l = locationMgr.getLastKnownLocation(provider);
+            if (l == null) {
+                continue;
+            }
+            if (bestLocation == null
+                    || l.getAccuracy() < bestLocation.getAccuracy()) {//accuracy數值越小越精準
+                bestLocation = l;
+            }
         }
-        Location location = this.locationMgr.getLastKnownLocation(provider);
-        if(location == null){//沒有位置可以拿
+        if (bestLocation == null) {
             return;
         }
 
-        Log.e("debug","location.getLatitude()"+location.getLatitude());
+        /*
+        // 先試試看其他APP提供的位置
+        // 取得位置提供者，不下條件，讓系統決定最適用者，true 表示生效的 provider
+        String provider = this.locationMgr.getBestProvider(new Criteria(), true);
+        if (provider != null) {
+            location = this.locationMgr.getLastKnownLocation(provider);
+        }
+        if(location == null){//假如別的APP提供的位置為空，再試試看用自己的GPS
+            location = this.locationMgr.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            Log.e("debug","provider failed to provide location");
+        }
+        if(location == null){//GPS不行的話，就試試看wifi定位
+            location = this.locationMgr.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            Log.e("debug","GPS failed to provide location");
+        }
+        if(location == null){//全部不行的話，就沒辦法了，直接跳出此函式
+            Log.e("debug","Network failed to provide location");
+            return;
+        }
+        */
+
+        Log.e("debug","location.getLatitude()"+bestLocation.getLatitude());
 
         int nearestBusStop = 0;
         float minDis[] = {0};
-        location.distanceBetween(location.getLatitude(),location.getLongitude(),
+        bestLocation.distanceBetween(bestLocation.getLatitude(),bestLocation.getLongitude(),
                 Constant.latitudes[position][0],Constant.longitudes[position][0],minDis);
 
         for(int i=1; i < Constant.latitudes[position].length; i++){
             float temp[] = {0};
-            location.distanceBetween(location.getLatitude(),location.getLongitude(),
+            bestLocation.distanceBetween(bestLocation.getLatitude(),bestLocation.getLongitude(),
                     Constant.latitudes[position][i],Constant.longitudes[position][i],temp);
             if(minDis[0]>temp[0]){
                 minDis[0]=temp[0];
@@ -383,8 +418,6 @@ public class DetailFragment extends Fragment {
                 listView.smoothScrollToPosition(listView.getCount()-1);
             }
         }
-
-
         Log.e("debug", "nearestBusStop=" + nearestBusStop);
     }
 

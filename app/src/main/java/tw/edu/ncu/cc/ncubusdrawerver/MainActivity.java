@@ -226,7 +226,6 @@ public class MainActivity extends FragmentActivity {
     }
 
     public void displayTimeTable(){
-        Intent intent;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         AlertDialog dialog;
 
@@ -244,38 +243,44 @@ public class MainActivity extends FragmentActivity {
                 dialog.show();
                 break;
             case 2://133
-                intent = new Intent(Intent.ACTION_VIEW,Uri.parse("http://www.chunglibus.com.tw/route/133-2.html"));
-                startActivity(intent);
+                builder.setMessage(Constant.timeTables[2]);
+                builder.setTitle("133時刻表");
+                dialog = builder.create();
+                dialog.show();
                 break;
             case 3://172去程
-                intent = new Intent(Intent.ACTION_VIEW,Uri.parse("http://www.chunglibus.com.tw/route/172.html"));
-                startActivity(intent);
+                builder.setMessage(Constant.timeTables[3]);
+                builder.setTitle("172去程時刻表");
+                dialog = builder.create();
+                dialog.show();
                 break;
             case 4://172返程
-                intent = new Intent(Intent.ACTION_VIEW,Uri.parse("http://www.chunglibus.com.tw/route/172.html"));
-                startActivity(intent);
+                builder.setMessage(Constant.timeTables[3]);
+                builder.setTitle("172返程時刻表");
+                dialog = builder.create();
+                dialog.show();
                 break;
             case 5://9025往台北
                 builder.setTitle("9025往台北時刻表");
-                builder.setMessage(Constant.timeTables[2]);
+                builder.setMessage(Constant.timeTables[4]);
                 dialog = builder.create();
                 dialog.show();
                 break;
             case 6://9025往中壢
                 builder.setTitle("9025往中壢時刻表");
-                builder.setMessage(Constant.timeTables[2]);
+                builder.setMessage(Constant.timeTables[4]);
                 dialog = builder.create();
                 dialog.show();
                 break;
             case 7://9025往台北(繞駛中大)
                 builder.setTitle("9025往台北時刻表(繞駛中大)");
-                builder.setMessage(Constant.timeTables[3]);
+                builder.setMessage(Constant.timeTables[5]);
                 dialog = builder.create();
                 dialog.show();
                 break;
             case 8://9025往中壢(繞駛中大)
                 builder.setTitle("9025往中壢時刻表(繞駛中大)");
-                builder.setMessage(Constant.timeTables[3]);
+                builder.setMessage(Constant.timeTables[6]);
                 dialog = builder.create();
                 dialog.show();
                 break;
