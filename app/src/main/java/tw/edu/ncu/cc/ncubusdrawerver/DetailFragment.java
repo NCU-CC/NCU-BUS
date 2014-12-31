@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -259,8 +260,7 @@ public class DetailFragment extends Fragment {
 
             }else{
                 try{
-
-                    String url = "http://www.taiwanbus.tw/aspx/dyBus/BusXMLLine.aspx?Mode=4&RunId=8193";
+                    String url = Constant.urls[position];
                     HttpClient client = new DefaultHttpClient();
                     HttpGet get = new HttpGet(url);
                     HttpResponse response = client.execute(get);
@@ -272,7 +272,6 @@ public class DetailFragment extends Fragment {
                     if(resEntity.getContentLength() == 0){return;}//if there are no contents, skip all the string processing.
 
                     String result = EntityUtils.toString(resEntity);
-                    //String result = "8193_,1_,281415_,松山機場_,121.55132_,25.06326_,123101|8193_,2_,247146_,台北大學_,121.54174_,25.05793_,103492|8193_,3_,247147_,行天宮_,121.533381_,25.063401_,35222|8193_,6_,247154_,祐民醫院_,121.20372_,24.95706_,119598|8193_,7_,295962_,新明國中_,121.21335_,24.95597_,129209|8193_,8_,247159_,舊社_,121.216327_,24.955388_,123275|8193_,9_,247366_,中壢公車站_,121.22373_,24.95424_,121509|20869@未發車,20721@未發車,20366@未發車,34273@未發車,31691@未發車,34298@未發車,32658@未發車";
                     Log.e("debug","Content: " + result);
                     String[] array = result.split(",");
 
@@ -362,14 +361,16 @@ public class DetailFragment extends Fragment {
         for (String provider : providers) {
             Location l = locationMgr.getLastKnownLocation(provider);
             if (l == null) {
+                Log.e("debug",provider + "unable to provide location");
                 continue;
             }
             if (bestLocation == null
-                    || l.getAccuracy() < bestLocation.getAccuracy()) {//accuracy數值越小越精準
+                    ||l.getAccuracy() < bestLocation.getAccuracy()){//accuracy數值越小越精準
                 bestLocation = l;
             }
         }
         if (bestLocation == null) {
+            Log.e("debug","No location available");
             return;
         }
 
@@ -412,13 +413,13 @@ public class DetailFragment extends Fragment {
         }
 
         if(listView != null){
-            if(nearestBusStop + 12 < listView.getCount()){
-                listView.smoothScrollToPosition(nearestBusStop + 12);
+            if(nearestBusStop + 5 < listView.getCount()){
+                listView.smoothScrollToPosition(nearestBusStop + 5);
             }else{
                 listView.smoothScrollToPosition(listView.getCount()-1);
             }
         }
-        Log.e("debug", "nearestBusStop=" + nearestBusStop);
+        Log.e("debug", "position" + position + " nearestBusStop=" + nearestBusStop);
     }
 
 

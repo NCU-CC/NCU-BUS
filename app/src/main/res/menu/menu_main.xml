@@ -4,4 +4,12 @@
           android:title="@string/action_time_table"
           android:orderInCategory="100"
           android:showAsAction="never" />
+    <item android:id="@+id/action_terminus_information"
+        android:title="@string/action_terminus_information"
+        android:orderInCategory="200"
+        android:showAsAction="never" />
+    <item android:id="@+id/action_version_code"
+        android:title="@string/action_version_code"
+        android:orderInCategory="300"
+        android:showAsAction="never" />
 </menu>

@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 
@@ -136,11 +137,24 @@ public class MainActivity extends FragmentActivity {
             return true;
         }
 
-        //noinspection SimplifiableIfStatement
         int id = item.getItemId();
         if (id == R.id.action_time_table) {
             displayTimeTable();
             return true;
+        }else if(id == R.id.action_terminus_information) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("總站資訊");
+            builder.setView(getLayoutInflater().inflate(R.layout.terminus_information_dialog, null));
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
+        else if(id == R.id.action_version_code){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("版本資訊");
+            builder.setMessage("ver 1.0");
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
         }
 
         return super.onOptionsItemSelected(item);
