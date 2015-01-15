@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">NCUBUS(DrawerVer)</string>
+    <string name="app_name">中大公車</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_time_table">時刻表</string>
     <string name="drawer_open">drawer_open</string>
