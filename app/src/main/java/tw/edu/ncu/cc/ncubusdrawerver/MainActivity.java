@@ -25,7 +25,7 @@ import android.widget.ListView;
 
 
 public class MainActivity extends FragmentActivity {
-    public static final String PREFS_NAME = "MyPrefsFile";
+    public static final String PREFS_NAME = "NCUBUSPrefsFile";
 
     private DrawerLayout drawerLayout;
     private ListView drawerList;
@@ -201,7 +201,7 @@ public class MainActivity extends FragmentActivity {
         }
     }
 
-    public void onButtonClick (View view) {
+    public void onButtonClick (View view) {//按下最下面四個按鈕會發生什麼事的部分
         Intent intent;
         int viewID = view.getId();
         String sParam = "";

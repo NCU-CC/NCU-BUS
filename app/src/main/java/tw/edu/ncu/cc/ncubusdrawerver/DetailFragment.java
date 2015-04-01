@@ -175,11 +175,11 @@ public class DetailFragment extends Fragment {
 
         @Override
         protected void onPreExecute(){
-            if(isAnotherAsyncTaskRunning){
+            if(isAnotherAsyncTaskRunning){//確認同路公車目前沒有其他在跑的AsyncTask
                 this.cancel(true);
             }
             isAnotherAsyncTaskRunning = true;
-            getActivity().runOnUiThread(new Runnable() {
+            getActivity().runOnUiThread(new Runnable() {//讓DrawerLayout出現loading旋轉圓圈的部分
                 @Override
                 public void run() {
                     TypedValue typedValue = new TypedValue();

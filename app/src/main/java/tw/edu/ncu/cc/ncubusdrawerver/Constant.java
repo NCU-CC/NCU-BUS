@@ -9,38 +9,18 @@ import java.util.Arrays;
  */
 public class Constant {
 
-    //Web Links new
+    //Data source new
     public static final String[] urls = {
-            "http://124.199.77.90/Taoyuan/PDA/businfo.aspx?Routeid=132&GO_OR_BACK=1&Line=1&lang=Cht",//132
-            "http://124.199.77.90/Taoyuan/PDA/businfo.aspx?Routeid=132A&GO_OR_BACK=1&Line=1&lang=Cht",//132_A
-            "http://124.199.77.90/Taoyuan/PDA/businfo.aspx?Routeid=133&GO_OR_BACK=1&Line=2&lang=Cht",//133
-            "http://124.199.77.90/Taoyuan/PDA/businfo.aspx?Routeid=172&GO_OR_BACK=1&Line=all&lang=Cht",//172去程
-            "http://124.199.77.90/Taoyuan/PDA/businfo.aspx?Routeid=172&GO_OR_BACK=2&Line=all&lang=Cht",//172返程
+            "http://ebus.tycg.gov.tw/NewTaoyuan/PDA/businfo.aspx?Routeid=3220&GO_OR_BACK=1&Line=all&lang=Cht",//132
+            "http://ebus.tycg.gov.tw/NewTaoyuan/PDA/businfo.aspx?Routeid=3222&GO_OR_BACK=1&Line=all&lang=Cht",//132_A
+            "http://ebus.tycg.gov.tw/NewTaoyuan/PDA/businfo.aspx?Routeid=133&GO_OR_BACK=1&Line=all&lang=Cht",//133
+            "http://ebus.tycg.gov.tw/NewTaoyuan/PDA/businfo.aspx?Routeid=3221&GO_OR_BACK=1&Line=all&lang=Cht",//172去程
+            "http://ebus.tycg.gov.tw/NewTaoyuan/PDA/businfo.aspx?Routeid=3221&GO_OR_BACK=2&Line=all&lang=Cht",//172返程
             "http://www.taiwanbus.tw/aspx/dyBus/BusXMLLine.aspx?Mode=4&RunId=8194",//9025往台北
             "http://www.taiwanbus.tw/aspx/dyBus/BusXMLLine.aspx?Mode=4&RunId=8193",//9025往中壢
             "http://www.taiwanbus.tw/aspx/dyBus/BusXMLLine.aspx?Mode=4&RunId=9405",//9025往台北(繞駛中央大學)
             "http://www.taiwanbus.tw/aspx/dyBus/BusXMLLine.aspx?Mode=4&RunId=9406",//90252往中壢(繞駛中央大學)
     };
-
-    //Web Links old
-    /*
-    public static final String[] urls = {
-            "http://124.199.77.90/Taoyuan/PDA/businfo.aspx?Routeid=132&GO_OR_BACK=1&Line=1&lang=Cht",//132
-            "http://124.199.77.90/Taoyuan/PDA/businfo.aspx?Routeid=132A&GO_OR_BACK=1&Line=1&lang=Cht",//132_A
-            "http://124.199.77.90/Taoyuan/PDA/businfo.aspx?Routeid=133&GO_OR_BACK=1&Line=2&lang=Cht",//133
-            "http://124.199.77.90/Taoyuan/PDA/businfo.aspx?Routeid=172&GO_OR_BACK=1&Line=all&lang=Cht",//172去程
-            "http://124.199.77.90/Taoyuan/PDA/businfo.aspx?Routeid=172&GO_OR_BACK=2&Line=all&lang=Cht",//172返程
-            "http://pda.5284.com.tw/MQS/businfo2.jsp?routename=9025%E4%B8%AD%E5%A3%A2%E2%86%92%E5%9C" +//9025去程
-                    "%8B%E9%81%931%E8%99%9F%E2%86%92%E8%87%BA%E5%8C%97%E5%B8%82%E6%9D%BE%E5%B1%B1%E5%8D%80",
-            "http://pda.5284.com.tw/MQS/businfo2.jsp?routename=9025%E8%87%BA%E5%8C%97%E5%B8%82%E6%9D" +//9025返程
-                    "%BE%E5%B1%B1%E5%8D%80%E2%86%92%E5%9C%8B%E9%81%931%E8%99%9F%E2%86%92%E4%B8%AD%E5%A3%A2",
-            "http://pda.5284.com.tw/MQS/businfo2.jsp?routename=9025%E4%B8%AD%E5%A3%A2%E2%86%92%E5%9C" +//9025去程繞駛中央
-                    "%8B%E9%81%931%E8%99%9F%E2%86%92%E8%87%BA%E5%8C%97%E5%B8%82%E6%9D%BE%E5%B1%B1%E5%8D%80%5B%E7%B9%9E%E9%A7%9B%E4%B8%AD%E5%A4%AE%E5%A4%A7%E5%AD%B8%5D",
-            "http://pda.5284.com.tw/MQS/businfo2.jsp?routename=9025%E8%87%BA%E5%8C%97%E5%B8%82%E6%9D" +//9025返程繞駛中央
-                    "%BE%E5%B1%B1%E5%8D%80%E2%86%92%E5%9C%8B%E9%81%931%E8%99%9F%E2%86%92%E4%B8%AD%E5%A3%A2%5B%E7%B9%9E%E9%A7%9B%E4%B8%AD%E5%A4%AE%E5%A4%A7%E5%AD%B8%5D",
-            "http://www.taiwanbus.tw/DyBus.aspx?Lang=&ID=8194#9025#1"//test
-    };*/
-
 
     //Bus stop locations
 

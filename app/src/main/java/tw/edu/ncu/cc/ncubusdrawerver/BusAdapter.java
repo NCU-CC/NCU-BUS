@@ -65,6 +65,9 @@ public class BusAdapter extends ArrayAdapter {
                     viewHolder.TimeView.setTextColor(Color.RED);
                     if (value == 0) {
                         viewHolder.TimeView.setText("進站中");
+                    }else if(value < 0){
+                        viewHolder.TimeView.setTextColor(Color.GRAY);
+                        viewHolder.TimeView.setText("末班車已駛離");
                     }
                 }
             }
