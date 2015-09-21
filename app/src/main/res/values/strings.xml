@@ -8,7 +8,7 @@
     <string name="drawer_close">drawer_close</string>
     <string name="drawer_open_title">路線選擇</string>
     <string name="drawer_close_title">NCU-BUS</string>
-    <string name="action_version_code">版本資訊</string>
+    <string name="action_announcement">說明</string>
     <string name="action_terminus_information">總站資訊</string>
 
 </resources>

@@ -14,9 +14,6 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by andre.hu on 2014/11/16.
- */
 public class BusAdapter extends ArrayAdapter {
 
     Activity myContext;

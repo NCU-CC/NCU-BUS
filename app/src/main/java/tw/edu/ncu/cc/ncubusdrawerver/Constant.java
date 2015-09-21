@@ -1,25 +1,18 @@
 package tw.edu.ncu.cc.ncubusdrawerver;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-
-/**
- * Created by andre.hu on 2014/11/16.
- */
 public class Constant {
 
     //Data source new
     public static final String[] urls = {
-            "http://ebus.tycg.gov.tw/NewTaoyuan/PDA/businfo.aspx?Routeid=3220&GO_OR_BACK=1&Line=all&lang=Cht",//132
-            "http://ebus.tycg.gov.tw/NewTaoyuan/PDA/businfo.aspx?Routeid=3222&GO_OR_BACK=1&Line=all&lang=Cht",//132_A
+            "http://ebus.tycg.gov.tw/NewTaoyuan/PDA/businfo.aspx?Routeid=132&GO_OR_BACK=1&Line=all&lang=Cht",//132
+            "http://ebus.tycg.gov.tw/NewTaoyuan/PDA/businfo.aspx?Routeid=132A&GO_OR_BACK=1&Line=all&lang=Cht",//132_A
             "http://ebus.tycg.gov.tw/NewTaoyuan/PDA/businfo.aspx?Routeid=133&GO_OR_BACK=1&Line=all&lang=Cht",//133
-            "http://ebus.tycg.gov.tw/NewTaoyuan/PDA/businfo.aspx?Routeid=3221&GO_OR_BACK=1&Line=all&lang=Cht",//172去程
-            "http://ebus.tycg.gov.tw/NewTaoyuan/PDA/businfo.aspx?Routeid=3221&GO_OR_BACK=2&Line=all&lang=Cht",//172返程
-            "http://www.taiwanbus.tw/aspx/dyBus/BusXMLLine.aspx?Mode=4&RunId=8194",//9025往台北
-            "http://www.taiwanbus.tw/aspx/dyBus/BusXMLLine.aspx?Mode=4&RunId=8193",//9025往中壢
-            "http://www.taiwanbus.tw/aspx/dyBus/BusXMLLine.aspx?Mode=4&RunId=9405",//9025往台北(繞駛中央大學)
-            "http://www.taiwanbus.tw/aspx/dyBus/BusXMLLine.aspx?Mode=4&RunId=9406",//90252往中壢(繞駛中央大學)
+            "http://ebus.tycg.gov.tw/NewTaoyuan/PDA/businfo.aspx?Routeid=172&GO_OR_BACK=1&Line=all&lang=Cht",//172去程
+            "http://ebus.tycg.gov.tw/NewTaoyuan/PDA/businfo.aspx?Routeid=172&GO_OR_BACK=2&Line=all&lang=Cht",//172返程
+            "http://www.taiwanbus.tw/app_api/SP_PredictionTime.ashx?routeNo=9025&branch=0&goBack=1&Lang=&Source=w",//9025往台北
+            "http://www.taiwanbus.tw/app_api/SP_PredictionTime.ashx?routeNo=9025&branch=0&goBack=2&Lang=&Source=w",//9025往中壢
+            "http://www.taiwanbus.tw/app_api/SP_PredictionTime.ashx?routeNo=9025&branch=A&goBack=1&Lang=&Source=w",//9025往台北(繞駛中央大學)
+            "http://www.taiwanbus.tw/app_api/SP_PredictionTime.ashx?routeNo=9025&branch=A&goBack=2&Lang=&Source=w",//90252往中壢(繞駛中央大學)
     };
 
     //Bus stop locations
@@ -217,4 +210,13 @@ public class Constant {
             "0730 1810 1900 1945\n" +
             "預估中央大學抵達時間\n" +
             "0840 1920 2010 2055"};
+
+    public static String announcement =
+            "Version：v1.1\n" +
+            "License：MIT License\n" +
+            "Repository：https://github.com/NCU-CC/NCU-BUS\n" +
+            "Contributors：蔡宇傑、杜祐興、xxx663xxx\n" +
+            "Owner：National Central University, Computer Center\n" +
+            "Url：https://www.cc.ncu.edu.tw\n" +
+            "Email：mobile@cc.ncu.edu.tw";
 }

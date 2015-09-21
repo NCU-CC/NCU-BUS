@@ -108,7 +108,6 @@ public class MainActivity extends FragmentActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         // If the nav drawer is open, hide action items related to the content view
-        boolean drawerOpen = drawerLayout.isDrawerOpen(drawerList);
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -148,10 +147,10 @@ public class MainActivity extends FragmentActivity {
             AlertDialog dialog = builder.create();
             dialog.show();
         }
-        else if(id == R.id.action_version_code){
+        else if(id == R.id.action_announcement){
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("版本資訊");
-            builder.setMessage("ver 1.0");
+            builder.setMessage(Constant.announcement);
 
             AlertDialog dialog = builder.create();
             dialog.show();

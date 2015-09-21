@@ -8,8 +8,8 @@
         android:title="@string/action_terminus_information"
         android:orderInCategory="200"
         android:showAsAction="never" />
-    <item android:id="@+id/action_version_code"
-        android:title="@string/action_version_code"
+    <item android:id="@+id/action_announcement"
+        android:title="@string/action_announcement"
         android:orderInCategory="300"
         android:showAsAction="never" />
 </menu>

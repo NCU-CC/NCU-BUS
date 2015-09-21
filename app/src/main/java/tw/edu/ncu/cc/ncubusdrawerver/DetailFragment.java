@@ -1,7 +1,6 @@
 package tw.edu.ncu.cc.ncubusdrawerver;
 
 import android.content.Context;
-import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
@@ -18,7 +17,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
-import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -71,8 +73,6 @@ public class DetailFragment extends Fragment {
         ViewGroup rootView;
         rootView = (ViewGroup) inflater.inflate(R.layout.fragment_detail, container, false);
 
-
-        //debug
         BusData testData = new BusData();
         testData.busStop = "暫無資料";
         testData.busTime = "暫無資料";
@@ -172,7 +172,6 @@ public class DetailFragment extends Fragment {
 
     private class DownloadBusTask extends AsyncTask<Integer, Void, Void> {
 
-
         @Override
         protected void onPreExecute(){
             if(isAnotherAsyncTaskRunning){//確認同路公車目前沒有其他在跑的AsyncTask
@@ -256,8 +255,6 @@ public class DetailFragment extends Fragment {
                 {
                     e.printStackTrace();
                 }
-
-
             }else{
                 try{
                     String url = Constant.urls[position];
@@ -268,87 +265,39 @@ public class DetailFragment extends Fragment {
                     Log.e("debug","request sent");
                     Log.e("debug","ContentLength: "+response.getEntity().getContentLength());
 
-
                     if(resEntity.getContentLength() == 0){return;}//if there are no contents, skip all the string processing.
 
                     String result = EntityUtils.toString(resEntity);
                     Log.e("debug","Content: " + result);
-                    String[] array = result.split(",");
 
-                    //debug
-                    for(int i=0;i<array.length;i++){
-                        Log.e("debug","array[" + i + "]: " + array[i]);
-                    }
-
-                    ArrayList<String> BusTime = new ArrayList<String>();
-                    ArrayList<String> BusStop = new ArrayList<String>();
-
-                    for(int i=0;i<array.length;i++){
-                        if(array[i].contains("@")){
-                            BusTime.add( array[i].substring(array[i].indexOf("@") + 1,array[i].length()) );
-                        }else{
-                            if(!array[i].contains("0")&&!array[i].contains("1")&&!array[i].contains("2")&&!array[i].contains("3")&&!array[i].contains("4")&&!array[i].contains("5")&&!array[i].contains("6")&&!array[i].contains("7")&&!array[i].contains("8")&&!array[i].contains("9")){
-                                BusStop.add(array[i].replace("_",""));
-                            }
-                        }
-                    }
-
-                    for(int i=0;i<BusStop.size();i++){
-                        Log.e("debug","BusStop.get(" + i + "): " + BusStop.get(i));
-                        Log.e("debug","BusTime.get(" + i + "): " + BusTime.get(i));
-                    }
-
-                    //write data
-
+                    //parse and write data
                     itemList.clear();
                     Data.datas[position].clear();
-                    for(int i=0;i<BusStop.size();i++){
-                        BusData PData = new BusData();
-                        PData.busStop = BusStop.get(i);
-                        PData.busTime = BusTime.get(i);
-                        itemList.add(PData);
-                        Data.datas[position].add(PData);
+                    JSONArray busInfoArray = new JSONArray(result);
+                    for(int i=0;i<busInfoArray.length();i++){
+                        JSONObject busData = busInfoArray.getJSONObject(i);
+                        BusData mData = new BusData();
+                        mData.busStop = busData.getString("name");
+                        mData.busTime = busData.getString("predictionTime");
+                        itemList.add(mData);
+                        Data.datas[position].add(mData);
                     }
-
-
                 }catch(Exception e){
                     e.printStackTrace();
                 }
-
-            /*
-                try {
-                    URL url = new URL(Constant.urls[position]);
-                    Document doc = Jsoup.parse(url, 3000);
-                    Elements links = doc.select("tbody:has(tr.ttego1) > tr > td");
-
-                    //測試
-                    for(int i=0;i<links.size();i++){
-                        Log.e("debug","links.get(" + i + ")" + links.get(i).text());
-                    }
-
-                    // 實際寫進資料的部分
-                    String linkText;
-                    itemList.clear();
-                    Data.datas[position].clear();
-                    for (int i = 3; i < links.size() - 1; i += 2) {
-                        BusData PData = new BusData();
-                        Element link = links.get(i);
-                        linkText = link.text();
-                        PData.busStop = linkText;
-                        link = links.get(i + 1);
-                        linkText = link.text();
-                        PData.busTime = linkText;
-                        itemList.add(PData);
-                        Data.datas[position].add(PData);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }*/
             }
         }else{// if there aren't any active network
 
-            itemList.clear();
-            itemList.addAll(Data.datas[position]);
+            if(Data.datas[position].size()>0){
+                itemList.clear();
+                itemList.addAll(Data.datas[position]);
+            }else{
+                itemList.clear();
+                BusData testData = new BusData();
+                testData.busStop = "暫無資料";
+                testData.busTime = "暫無資料";
+                itemList.add(testData);
+            }
         }
 
 
@@ -395,7 +344,7 @@ public class DetailFragment extends Fragment {
         }
         */
 
-        Log.e("debug","location.getLatitude()"+bestLocation.getLatitude());
+        //Log.e("debug","location.getLatitude()"+bestLocation.getLatitude());
 
         int nearestBusStop = 0;
         float minDis[] = {0};
@@ -419,7 +368,7 @@ public class DetailFragment extends Fragment {
                 listView.smoothScrollToPosition(listView.getCount()-1);
             }
         }
-        Log.e("debug", "position" + position + " nearestBusStop=" + nearestBusStop);
+        //Log.e("debug", "position" + position + " nearestBusStop=" + nearestBusStop);
     }
 
 

@@ -2,9 +2,6 @@ package tw.edu.ncu.cc.ncubusdrawerver;
 
 import java.util.ArrayList;
 
-/**
- * Created by andre.hu on 2014/11/30.
- */
 public class Data {
 
     public static ArrayList<BusData> bus_132 = new ArrayList<BusData>();
