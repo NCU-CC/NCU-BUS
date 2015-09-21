@@ -149,9 +149,8 @@ public class MainActivity extends FragmentActivity {
         }
         else if(id == R.id.action_announcement){
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("版本資訊");
+            builder.setTitle("說明");
             builder.setMessage(Constant.announcement);
-
             AlertDialog dialog = builder.create();
             dialog.show();
         }
