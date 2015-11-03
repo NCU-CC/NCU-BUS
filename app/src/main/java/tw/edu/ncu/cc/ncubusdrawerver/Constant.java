@@ -4,11 +4,11 @@ public class Constant {
 
     //Data source new
     public static final String[] urls = {
-            "http://ebus.tycg.gov.tw/NewTaoyuan/PDA/businfo.aspx?Routeid=132&GO_OR_BACK=1&Line=all&lang=Cht",//132
-            "http://ebus.tycg.gov.tw/NewTaoyuan/PDA/businfo.aspx?Routeid=132A&GO_OR_BACK=1&Line=all&lang=Cht",//132_A
-            "http://ebus.tycg.gov.tw/NewTaoyuan/PDA/businfo.aspx?Routeid=133&GO_OR_BACK=1&Line=all&lang=Cht",//133
-            "http://ebus.tycg.gov.tw/NewTaoyuan/PDA/businfo.aspx?Routeid=172&GO_OR_BACK=1&Line=all&lang=Cht",//172去程
-            "http://ebus.tycg.gov.tw/NewTaoyuan/PDA/businfo.aspx?Routeid=172&GO_OR_BACK=2&Line=all&lang=Cht",//172返程
+            "http://ebus.tycg.gov.tw/NewTaoyuan/PDA/businfo.aspx?Routeid=3220&GO_OR_BACK=1&Line=1&lang=Cht",//132
+            "http://ebus.tycg.gov.tw/NewTaoyuan/PDA/businfo.aspx?Routeid=3222&GO_OR_BACK=1&Line=1&lang=Cht",//132_A
+            "http://ebus.tycg.gov.tw/NewTaoyuan/PDA/businfo.aspx?Routeid=133&GO_OR_BACK=1&Line=2&lang=Cht",//133
+            "http://ebus.tycg.gov.tw/NewTaoyuan/PDA/businfo.aspx?Routeid=3221&GO_OR_BACK=1&Line=2&lang=Cht",//172去程
+            "http://ebus.tycg.gov.tw/NewTaoyuan/PDA/businfo.aspx?Routeid=3221&GO_OR_BACK=2&Line=2&lang=Cht",//172返程
             "http://www.taiwanbus.tw/app_api/SP_PredictionTime.ashx?routeNo=9025&branch=0&goBack=1&Lang=&Source=w",//9025往台北
             "http://www.taiwanbus.tw/app_api/SP_PredictionTime.ashx?routeNo=9025&branch=0&goBack=2&Lang=&Source=w",//9025往中壢
             "http://www.taiwanbus.tw/app_api/SP_PredictionTime.ashx?routeNo=9025&branch=A&goBack=1&Lang=&Source=w",//9025往台北(繞駛中央大學)
